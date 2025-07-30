@@ -75,6 +75,7 @@ export default function ReportScreen() {
         useCallback(() => {
             fetchData();
             setSelectedMonthYear(currentMonthYear);
+            setSelectedTimeSlot("todos");
         }, [])
     );
 
@@ -104,15 +105,6 @@ export default function ReportScreen() {
         setMeasurements(filteredData);
         setShowFilters(false)
     };
-
-    const renderFooter = () => (
-        <View style={globalStyles.container}>
-            <TouchableOpacity style={globalStyles.button} onPress={() => { }}>
-                <Ionicons name="cloud-download-outline" size={25} color="white" />
-                <Text style={globalStyles.buttonText}>Descargar PDF</Text>
-            </TouchableOpacity>
-        </View>
-    );
 
     if (checkingAuth || loadingTimeSlots || loadingMeasurements) {
         return <LoadingIndicator />;
@@ -187,14 +179,13 @@ export default function ReportScreen() {
                         <Text style={globalStyles.text}>🍽️ {item.time_slots?.name}</Text>
                         <Text style={globalStyles.text}>💉 {item.measure} mg/dL</Text>
                     </View>
-                )}
-                ListFooterComponent={renderFooter}
+                )}                
             />
 
             <View style={globalStyles.averageContainer}>
                 <Text style={globalStyles.averageText}>
                     Promedio: {average.toFixed(1)} mg/dL
-                </Text>
+                </Text>                
             </View>
         </>
     );

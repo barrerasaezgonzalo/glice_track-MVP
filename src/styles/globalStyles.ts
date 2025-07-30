@@ -55,7 +55,7 @@ export const globalStyles = StyleSheet.create({
   },
   averageText: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 15,
     color: "#55bb32",
   },
   pickerWrapper: {
